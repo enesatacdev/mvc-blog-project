@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EnesAtacDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Articles">
+    <Key>
+      <PropertyRef Name="Article_Id" />
+    </Key>
+    <Property Name="Article_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Article_Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Article_Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Article_Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Category_Id" Type="Int32" Nullable="false" />
+    <Property Name="Article_View_Count" Type="Int32" Nullable="false" />
+    <Property Name="Article_Like_Count" Type="Int32" Nullable="false" />
+    <Property Name="Author_Id" Type="Int32" Nullable="false" />
+    <Property Name="Is_Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Authors" Relationship="Self.FK_Articles_Authors" FromRole="Articles" ToRole="Authors" />
+    <NavigationProperty Name="Categorys" Relationship="Self.FK_Makale_Kategori" FromRole="Articles" ToRole="Categorys" />
+    <NavigationProperty Name="Pictures" Relationship="Self.FK_Resim_Makale" FromRole="Articles" ToRole="Pictures" />
+    <NavigationProperty Name="Tags" Relationship="Self.Article_Tags" FromRole="Articles" ToRole="Tags" />
+    <Property Name="Picture_Id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Authors">
+    <Key>
+      <PropertyRef Name="Auther_Id" />
+    </Key>
+    <Property Name="Auther_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Author_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Author_Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Author_Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Author_Description" Type="String" MaxLength="505" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Author_PictureId" Type="Int32" Nullable="false" />
+    <Property Name="Author_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Author_Nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Categorys">
+    <Key>
+      <PropertyRef Name="Category_Id" />
+    </Key>
+    <Property Name="Category_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Category_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="Comment_Id" />
+    </Key>
+    <Property Name="Comment_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Article_Id" Type="Int32" Nullable="false" />
+    <Property Name="Comment_Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Comment_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Is_Active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pictures">
+    <Key>
+      <PropertyRef Name="Picture_Id" />
+    </Key>
+    <Property Name="Picture_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Small_Picture_Url" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Medium_Picture_Url" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Big_Picture_Url" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Video" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Article_Id" Type="Int32" Nullable="false" />
+    <Property Name="Cover_Photo_Url" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Tags">
+    <Key>
+      <PropertyRef Name="Tag_Id" />
+    </Key>
+    <Property Name="Tag_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tag_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Log_Records">
+    <Key>
+      <PropertyRef Name="IpAddress" />
+      <PropertyRef Name="Date" />
+    </Key>
+    <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <Association Name="FK_Articles_Authors">
+    <End Role="Authors" Type="Self.Authors" Multiplicity="1" />
+    <End Role="Articles" Type="Self.Articles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authors">
+        <PropertyRef Name="Auther_Id" />
+      </Principal>
+      <Dependent Role="Articles">
+        <PropertyRef Name="Author_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Makale_Kategori">
+    <End Role="Categorys" Type="Self.Categorys" Multiplicity="1" />
+    <End Role="Articles" Type="Self.Articles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categorys">
+        <PropertyRef Name="Category_Id" />
+      </Principal>
+      <Dependent Role="Articles">
+        <PropertyRef Name="Category_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Makale_Yazar">
+    <End Role="Authors" Type="Self.Authors" Multiplicity="1" />
+    <End Role="Articles" Type="Self.Articles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authors">
+        <PropertyRef Name="Auther_Id" />
+      </Principal>
+      <Dependent Role="Articles">
+        <PropertyRef Name="Author_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Resim_Makale">
+    <End Role="Articles" Type="Self.Articles" Multiplicity="1" />
+    <End Role="Pictures" Type="Self.Pictures" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Articles">
+        <PropertyRef Name="Article_Id" />
+      </Principal>
+      <Dependent Role="Pictures">
+        <PropertyRef Name="Article_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Resim_Makale1">
+    <End Role="Articles" Type="Self.Articles" Multiplicity="1" />
+    <End Role="Pictures" Type="Self.Pictures" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Articles">
+        <PropertyRef Name="Article_Id" />
+      </Principal>
+      <Dependent Role="Pictures">
+        <PropertyRef Name="Article_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Yorum_Makale">
+    <End Role="Articles" Type="Self.Articles" Multiplicity="1" />
+    <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Articles">
+        <PropertyRef Name="Article_Id" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="Article_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Yorum_Makale1">
+    <End Role="Articles" Type="Self.Articles" Multiplicity="1" />
+    <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Articles">
+        <PropertyRef Name="Article_Id" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="Article_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Yazar_Resim">
+    <End Role="Pictures" Type="Self.Pictures" Multiplicity="1" />
+    <End Role="Authors" Type="Self.Authors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pictures">
+        <PropertyRef Name="Picture_Id" />
+      </Principal>
+      <Dependent Role="Authors">
+        <PropertyRef Name="Author_PictureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Article_Tags">
+    <End Role="Tags" Type="Self.Tags" Multiplicity="*" />
+    <End Role="Articles" Type="Self.Articles" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="EnesAtacDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Articles" EntityType="Self.Articles" />
+    <EntitySet Name="Authors" EntityType="Self.Authors" />
+    <EntitySet Name="Categorys" EntityType="Self.Categorys" />
+    <EntitySet Name="Comments" EntityType="Self.Comments" />
+    <EntitySet Name="Pictures" EntityType="Self.Pictures" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Tags" EntityType="Self.Tags" />
+    <EntitySet Name="Log_Records" EntityType="Self.Log_Records" />
+    <AssociationSet Name="FK_Articles_Authors" Association="Self.FK_Articles_Authors">
+      <End Role="Authors" EntitySet="Authors" />
+      <End Role="Articles" EntitySet="Articles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Makale_Kategori" Association="Self.FK_Makale_Kategori">
+      <End Role="Categorys" EntitySet="Categorys" />
+      <End Role="Articles" EntitySet="Articles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Makale_Yazar" Association="Self.FK_Makale_Yazar">
+      <End Role="Authors" EntitySet="Authors" />
+      <End Role="Articles" EntitySet="Articles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Resim_Makale" Association="Self.FK_Resim_Makale">
+      <End Role="Articles" EntitySet="Articles" />
+      <End Role="Pictures" EntitySet="Pictures" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Resim_Makale1" Association="Self.FK_Resim_Makale1">
+      <End Role="Articles" EntitySet="Articles" />
+      <End Role="Pictures" EntitySet="Pictures" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Yorum_Makale" Association="Self.FK_Yorum_Makale">
+      <End Role="Articles" EntitySet="Articles" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Yorum_Makale1" Association="Self.FK_Yorum_Makale1">
+      <End Role="Articles" EntitySet="Articles" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Yazar_Resim" Association="Self.FK_Yazar_Resim">
+      <End Role="Pictures" EntitySet="Pictures" />
+      <End Role="Authors" EntitySet="Authors" />
+    </AssociationSet>
+    <AssociationSet Name="Article_Tags" Association="Self.Article_Tags">
+      <End Role="Tags" EntitySet="Tags" />
+      <End Role="Articles" EntitySet="Articles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Articles_Pictures" Association="EnesAtacDBModel.FK_Articles_Pictures">
+      <End Role="Pictures" EntitySet="Pictures" />
+      <End Role="Articles" EntitySet="Articles" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK_Articles_Pictures">
+    <End Type="EnesAtacDBModel.Pictures" Role="Pictures" Multiplicity="1" />
+    <End Type="EnesAtacDBModel.Articles" Role="Articles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pictures">
+        <PropertyRef Name="Picture_Id" />
+      </Principal>
+      <Dependent Role="Articles">
+        <PropertyRef Name="Picture_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,101 @@
+﻿@model enesatac_site.Models.Articles
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function view() {
+        setTimeout(function viewed(id) {
+            var articlelink = "/article/viewed/" + id;
+            $.ajax({
+                type: "GET",
+                url: articlink,
+                success: function viewcounter() {
+                    alert(id)
+                }
+
+            });
+        }, 3000);
+    });
+</script>
+
+@{
+    ViewBag.Title = Model.Article_Title.ToString();
+
+}
+
+<section class="content-wrap second-contents breadcrumb-colors c-white">
+    <div class="row">
+        <div class="container">
+            <nav aria-label="breadcrumb m-0 c-white">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item c-white"><a href="#" class="sp-color1">Anasayfa</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="@Url.KategoriSeoLink(Model.Categorys)" class="sp-color1">@Model.Categorys.Category_Name</a></li>
+                    <li class="breadcrumb-item active c-white" aria-current="page">@Model.Article_Title</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="content-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 main-content">
+                <article class="post post-27 type-post status-publish format-standard has-post-thumbnail hentry category-standard tag-sticky tag-text-post">
+                    <div class="featured">
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <div class="post-head">
+                        <h2 class="post-title"><a href="#">@Model.Article_Title</a></h2>
+                        <div class="post-meta">
+                            <span class="author">Yazar <a href="@Url.YazarSeoLink(Model.Authors)">@Model.Authors.Author_Name</a></span> &bull;
+                            <span class="date"><i class="fa fa-calendar"></i> @Model.Article_Date.ToShortDateString()</span>
+                            &bull; <span class="comment-count"><i class="fa fa-comments"></i> <a href="#">@Model.Comments1.Count</a></span>
+                        </div>
+                    </div>
+                    <div class="featured-media">
+                        <a href="#"><img src="@Model.Article_Cover_Image" /></a>
+                    </div>
+                    <div class="post-content">
+                        @Html.Raw(Model.Article_Content)
+                    </div>
+                    <div class="border-top1">
+                        <ul class="tag-list">
+                            @foreach (enesatac_site.Models.Tags tags in Model.Tags)
+                            {
+                                <li><a href="#" class="tag">@tags.Tag_Name</a></li>
+                            }
+
+                        </ul>
+                    </div>
+                    <footer class="post-footer clearfix">
+                        <div class="pull-left category-list">
+                            <i class="fa fa-folder-open-o"></i>
+                            <a href="@Url.KategoriSeoLink(Model.Categorys)" rel="category tag">@Model.Categorys.Category_Name</a>
+                        </div>
+                    </footer>
+                </article>
+                <div class="about-author clearfix">
+                    <a href="#"><img src="@Model.Authors.Author_PictureUrl" class="makale-photo-section" /></a>
+                    <div class="details">
+                        <div class="author">
+                            <a href="@Url.YazarSeoLink(Model.Authors)">@Model.Authors.Author_Name</a> Hakkında
+                        </div>
+                        <div class="meta-info">
+                        </div>
+
+                        <div class="bio">
+                            @Model.Authors.Author_Article_Description
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+
+            @Html.Action("Sidebar", "Widget")
+        </div>
+    </div>
+</section>
+

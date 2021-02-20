@@ -1,0 +1,9 @@
+﻿@model IEnumerable<enesatac_site.Models.Categorys>
+@{
+    ViewBag.Title = "HeaderNavigation";
+}
+
+@foreach(enesatac_site.Models.Categorys categories in Model)
+{
+<li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="@Url.KategoriSeoLink(categories)">@categories.Category_Name</a></li>
+}

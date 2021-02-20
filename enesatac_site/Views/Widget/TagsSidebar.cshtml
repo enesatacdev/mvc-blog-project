@@ -1,0 +1,16 @@
+﻿@model IEnumerable<enesatac_site.Models.Tags>
+@{
+    ViewBag.Title = "TagsSidebar";
+}
+
+<div id="futura_social_links_widget-4" class="widget widget_futura_social_links_widget">
+    <h4 class="title">Etiketler</h4>
+    <div class="content">
+        <ul class="social">
+            @foreach (enesatac_site.Models.Tags tags in Model)
+            {
+                <li><a href="#" class="sidebar-tags">@tags.Tag_Name</a></li>
+            }
+        </ul>
+    </div>
+</div>

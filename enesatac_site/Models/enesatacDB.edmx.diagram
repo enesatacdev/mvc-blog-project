@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f18ea698f763489d98138815e92f9409" Name="Diagram1" ZoomLevel="84">
+        <EntityTypeShape EntityType="EnesAtacDBModel.Articles" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnesAtacDBModel.Authors" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnesAtacDBModel.Categorys" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnesAtacDBModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnesAtacDBModel.Tags" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnesAtacDBModel.Log_Records" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="EnesAtacDBModel.FK_Articles_Authors1" ManuallyRouted="false" />
+        <AssociationConnector Association="EnesAtacDBModel.FK_Articles_Categorys" ManuallyRouted="false" />
+        <AssociationConnector Association="EnesAtacDBModel.Article_Tags" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EnesAtacDBModel.Sliders" Width="1.5" PointX="7.375" PointY="6.75" />
+        <EntityTypeShape EntityType="EnesAtacDBModel.Comments" Width="1.875" PointX="5" PointY="10.875" />
+        <AssociationConnector Association="EnesAtacDBModel.FK_Comments_Articles1" />
+        <EntityTypeShape EntityType="EnesAtacDBModel.CKEditor_Images" Width="1.5" PointX="3.375" PointY="0.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

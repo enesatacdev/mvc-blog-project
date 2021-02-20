@@ -1,0 +1,16 @@
+﻿@using NonFactors.Mvc.Grid
+@model IEnumerable<enesatac_site.Models.Articles>
+
+@(Html.Grid(Model).Build(col =>
+{
+
+    col.Add(x => x.Article_Id).Sortable(true).Titled("#");
+    col.Add(x => "<div class='product-img bg-transparent border'><img src=" + x.Article_Cover_Image + " width='150'/> </div>").Titled("Makale Resmi").Encoded(false);
+    col.Add(x => x.Article_Title).Sortable(true).Filterable(true).Titled("Adı");
+    col.Add(x => x.Categorys.Category_Name).Sortable(true).Filterable(true).Titled("Kategori");
+    col.Add(x => Html.Raw(!String.IsNullOrEmpty(x.Article_Content) ? x.Article_Content.Substring(0, Math.Min(x.Article_Content.Length, 23)) : x.Article_Content)).Filterable(true).Titled("İçerik").Css("makale-yazi p-0");
+})
+    .Empty("Veri Bulunamadı")
+    .AppendCss("table mb-0")
+
+)

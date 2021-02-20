@@ -1,0 +1,531 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EnesAtacDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EnesAtacDB.dbo.Article_Tags' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Article_Tags">
+          <Key>
+            <PropertyRef Name="Article_Id" />
+            <PropertyRef Name="Tag_Id" />
+          </Key>
+          <Property Name="Article_Id" Type="int" Nullable="false" />
+          <Property Name="Tag_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Articles">
+          <Key>
+            <PropertyRef Name="Article_Id" />
+          </Key>
+          <Property Name="Article_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Article_Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Article_Content" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Article_Date" Type="datetime" Nullable="false" />
+          <Property Name="Category_Id" Type="int" Nullable="false" />
+          <Property Name="Article_View_Count" Type="int" Nullable="false" />
+          <Property Name="Article_Like_Count" Type="int" Nullable="false" />
+          <Property Name="Author_Id" Type="int" Nullable="false" />
+          <Property Name="Is_Active" Type="bit" Nullable="false" />
+          <Property Name="Article_Is_Active_On_Last_Artices" Type="bit" Nullable="false" />
+          <Property Name="Article_Meta_Tags" Type="nvarchar(max)" />
+          <Property Name="Article_Meta_Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="Article_Cover_Image" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Authors">
+          <Key>
+            <PropertyRef Name="Auther_Id" />
+          </Key>
+          <Property Name="Auther_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Author_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Author_Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Author_Mail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Author_Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Author_PictureUrl" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Author_Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Author_Nickname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Author_Article_Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categorys">
+          <Key>
+            <PropertyRef Name="Category_Id" />
+          </Key>
+          <Property Name="Category_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Category_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Category_Ranking" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CKEditor_Images">
+          <Key>
+            <PropertyRef Name="CKEditor_Id" />
+          </Key>
+          <Property Name="CKEditor_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CKEditor_Url" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="Comment_Id" />
+          </Key>
+          <Property Name="Comment_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Comment_Username" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Comment_Content" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Comment_Date" Type="datetime" />
+          <Property Name="Comment_Article_İd" Type="int" Nullable="false" />
+          <Property Name="Comment_Is_Active" Type="bit" Nullable="false" />
+          <Property Name="Comment_Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Comment_Website" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EnesAtacDB.dbo.Log_Records' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Log_Records">
+          <Key>
+            <PropertyRef Name="IpAddress" />
+            <PropertyRef Name="Date" />
+          </Key>
+          <Property Name="IpAddress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EnesAtacDB.dbo.Sliders' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Sliders">
+          <Key>
+            <PropertyRef Name="Slider_Id" />
+            <PropertyRef Name="Slider_Url" />
+          </Key>
+          <Property Name="Slider_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Slider_Url" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tags">
+          <Key>
+            <PropertyRef Name="Tag_Id" />
+          </Key>
+          <Property Name="Tag_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tag_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Article_Tags_Articles">
+          <End Role="Articles" Type="Self.Articles" Multiplicity="1" />
+          <End Role="Article_Tags" Type="Self.Article_Tags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="Article_Id" />
+            </Principal>
+            <Dependent Role="Article_Tags">
+              <PropertyRef Name="Article_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Tags_Tags">
+          <End Role="Tags" Type="Self.Tags" Multiplicity="1" />
+          <End Role="Article_Tags" Type="Self.Article_Tags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tags">
+              <PropertyRef Name="Tag_Id" />
+            </Principal>
+            <Dependent Role="Article_Tags">
+              <PropertyRef Name="Tag_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Articles_Authors1">
+          <End Role="Authors" Type="Self.Authors" Multiplicity="1" />
+          <End Role="Articles" Type="Self.Articles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authors">
+              <PropertyRef Name="Auther_Id" />
+            </Principal>
+            <Dependent Role="Articles">
+              <PropertyRef Name="Author_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Articles_Categorys">
+          <End Role="Categorys" Type="Self.Categorys" Multiplicity="1" />
+          <End Role="Articles" Type="Self.Articles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorys">
+              <PropertyRef Name="Category_Id" />
+            </Principal>
+            <Dependent Role="Articles">
+              <PropertyRef Name="Category_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_Articles">
+          <End Role="Articles" Type="Self.Articles" Multiplicity="1" />
+          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="Article_Id" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="Comment_Article_İd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EnesAtacDBModelStoreContainer">
+          <EntitySet Name="Articles" EntityType="Self.Articles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Authors" EntityType="Self.Authors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categorys" EntityType="Self.Categorys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CKEditor_Images" EntityType="Self.CKEditor_Images" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Article_Tags" EntityType="Self.Article_Tags" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Article_Tags].[Article_Id] AS [Article_Id], 
+    [Article_Tags].[Tag_Id] AS [Tag_Id]
+    FROM [dbo].[Article_Tags] AS [Article_Tags]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Log_Records" EntityType="Self.Log_Records" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Log_Records].[IpAddress] AS [IpAddress], 
+    [Log_Records].[Date] AS [Date]
+    FROM [dbo].[Log_Records] AS [Log_Records]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Sliders" EntityType="Self.Sliders" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Sliders].[Slider_Id] AS [Slider_Id], 
+    [Sliders].[Slider_Url] AS [Slider_Url]
+    FROM [dbo].[Sliders] AS [Sliders]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Article_Tags_Articles" Association="Self.FK_Article_Tags_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="Article_Tags" EntitySet="Article_Tags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Tags_Tags" Association="Self.FK_Article_Tags_Tags">
+            <End Role="Tags" EntitySet="Tags" />
+            <End Role="Article_Tags" EntitySet="Article_Tags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Articles_Authors1" Association="Self.FK_Articles_Authors1">
+            <End Role="Authors" EntitySet="Authors" />
+            <End Role="Articles" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Articles_Categorys" Association="Self.FK_Articles_Categorys">
+            <End Role="Categorys" EntitySet="Categorys" />
+            <End Role="Articles" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_Articles" Association="Self.FK_Comments_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EnesAtacDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Articles">
+          <Key>
+            <PropertyRef Name="Article_Id" />
+          </Key>
+          <Property Name="Article_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Article_Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Article_Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Article_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Category_Id" Type="Int32" Nullable="false" />
+          <Property Name="Article_View_Count" Type="Int32" Nullable="false" />
+          <Property Name="Article_Like_Count" Type="Int32" Nullable="false" />
+          <Property Name="Author_Id" Type="Int32" Nullable="false" />
+          <Property Name="Is_Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Authors" Relationship="Self.FK_Articles_Authors1" FromRole="Articles" ToRole="Authors" />
+          <NavigationProperty Name="Categorys" Relationship="Self.FK_Articles_Categorys" FromRole="Articles" ToRole="Categorys" />
+          <NavigationProperty Name="Tags" Relationship="Self.Article_Tags" FromRole="Articles" ToRole="Tags" />
+          <NavigationProperty Name="Comments1" Relationship="EnesAtacDBModel.FK_Comments_Articles1" FromRole="Articles" ToRole="Comments1" />
+          <Property Name="Article_Is_Active_On_Last_Artices" Type="Boolean" Nullable="false" />
+          <Property Name="Article_Meta_Tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Article_Meta_Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Article_Cover_Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Authors">
+          <Key>
+            <PropertyRef Name="Auther_Id" />
+          </Key>
+          <Property Name="Auther_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Author_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Author_Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Author_Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Author_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Author_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Author_Nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Articles" Relationship="Self.FK_Articles_Authors1" FromRole="Authors" ToRole="Articles" />
+          <Property Name="Author_PictureUrl" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Author_Article_Description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Categorys">
+          <Key>
+            <PropertyRef Name="Category_Id" />
+          </Key>
+          <Property Name="Category_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Category_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Articles" Relationship="Self.FK_Articles_Categorys" FromRole="Categorys" ToRole="Articles" />
+          <Property Name="Category_Ranking" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tags">
+          <Key>
+            <PropertyRef Name="Tag_Id" />
+          </Key>
+          <Property Name="Tag_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tag_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Articles" Relationship="Self.Article_Tags" FromRole="Tags" ToRole="Articles" />
+        </EntityType>
+        <EntityType Name="Log_Records">
+          <Key>
+            <PropertyRef Name="IpAddress" />
+            <PropertyRef Name="Date" />
+          </Key>
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="FK_Articles_Authors1">
+          <End Role="Authors" Type="Self.Authors" Multiplicity="1" />
+          <End Role="Articles" Type="Self.Articles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authors">
+              <PropertyRef Name="Auther_Id" />
+            </Principal>
+            <Dependent Role="Articles">
+              <PropertyRef Name="Author_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Articles_Categorys">
+          <End Role="Categorys" Type="Self.Categorys" Multiplicity="1" />
+          <End Role="Articles" Type="Self.Articles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorys">
+              <PropertyRef Name="Category_Id" />
+            </Principal>
+            <Dependent Role="Articles">
+              <PropertyRef Name="Category_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Article_Tags">
+          <End Role="Articles" Type="Self.Articles" Multiplicity="*" />
+          <End Role="Tags" Type="Self.Tags" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="EnesAtac_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Articles" EntityType="Self.Articles" />
+          <EntitySet Name="Authors" EntityType="Self.Authors" />
+          <EntitySet Name="Categorys" EntityType="Self.Categorys" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Tags" EntityType="Self.Tags" />
+          <EntitySet Name="Log_Records" EntityType="Self.Log_Records" />
+          <AssociationSet Name="FK_Articles_Authors1" Association="Self.FK_Articles_Authors1">
+            <End Role="Authors" EntitySet="Authors" />
+            <End Role="Articles" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Articles_Categorys" Association="Self.FK_Articles_Categorys">
+            <End Role="Categorys" EntitySet="Categorys" />
+            <End Role="Articles" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="Article_Tags" Association="Self.Article_Tags">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="Tags" EntitySet="Tags" />
+          </AssociationSet>
+          <EntitySet Name="Sliders" EntityType="EnesAtacDBModel.Sliders" />
+          <EntitySet Name="CommentsSet" EntityType="EnesAtacDBModel.Comments" />
+          <AssociationSet Name="FK_Comments_Articles1" Association="EnesAtacDBModel.FK_Comments_Articles1">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="Comments1" EntitySet="CommentsSet" />
+          </AssociationSet>
+          <EntitySet Name="CKEditor_Images" EntityType="EnesAtacDBModel.CKEditor_Images" />
+        </EntityContainer>
+        <EntityType Name="Sliders">
+          <Key>
+            <PropertyRef Name="Slider_Id" />
+            <PropertyRef Name="Slider_Url" />
+          </Key>
+          <Property Name="Slider_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Slider_Url" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="Comment_Id" />
+          </Key>
+          <Property Name="Comment_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Comment_Username" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Comment_Content" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Comment_Date" Type="DateTime" Precision="3" />
+          <Property Name="Comment_Article_İd" Type="Int32" Nullable="false" />
+          <Property Name="Comment_Is_Active" Type="Boolean" Nullable="false" />
+          <Property Name="Comment_Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Comment_Website" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Articles" Relationship="EnesAtacDBModel.FK_Comments_Articles1" FromRole="Comments1" ToRole="Articles" />
+        </EntityType>
+        <Association Name="FK_Comments_Articles1">
+          <End Type="EnesAtacDBModel.Articles" Role="Articles" Multiplicity="1" />
+          <End Type="EnesAtacDBModel.Comments" Role="Comments1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="Article_Id" />
+            </Principal>
+            <Dependent Role="Comments1">
+              <PropertyRef Name="Comment_Article_İd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CKEditor_Images">
+          <Key>
+            <PropertyRef Name="CKEditor_Id" />
+          </Key>
+          <Property Name="CKEditor_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CKEditor_Url" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EnesAtacDBModelStoreContainer" CdmEntityContainer="EnesAtac_DBEntities">
+          <EntitySetMapping Name="Articles">
+            <EntityTypeMapping TypeName="EnesAtacDBModel.Articles">
+              <MappingFragment StoreEntitySet="Articles">
+                <ScalarProperty Name="Article_Cover_Image" ColumnName="Article_Cover_Image" />
+                <ScalarProperty Name="Article_Meta_Description" ColumnName="Article_Meta_Description" />
+                <ScalarProperty Name="Article_Meta_Tags" ColumnName="Article_Meta_Tags" />
+                <ScalarProperty Name="Article_Is_Active_On_Last_Artices" ColumnName="Article_Is_Active_On_Last_Artices" />
+                <ScalarProperty Name="Article_Id" ColumnName="Article_Id" />
+                <ScalarProperty Name="Article_Title" ColumnName="Article_Title" />
+                <ScalarProperty Name="Article_Content" ColumnName="Article_Content" />
+                <ScalarProperty Name="Article_Date" ColumnName="Article_Date" />
+                <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+                <ScalarProperty Name="Article_View_Count" ColumnName="Article_View_Count" />
+                <ScalarProperty Name="Article_Like_Count" ColumnName="Article_Like_Count" />
+                <ScalarProperty Name="Author_Id" ColumnName="Author_Id" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Authors">
+            <EntityTypeMapping TypeName="EnesAtacDBModel.Authors">
+              <MappingFragment StoreEntitySet="Authors">
+                <ScalarProperty Name="Author_Article_Description" ColumnName="Author_Article_Description" />
+                <ScalarProperty Name="Author_PictureUrl" ColumnName="Author_PictureUrl" />
+                <ScalarProperty Name="Auther_Id" ColumnName="Auther_Id" />
+                <ScalarProperty Name="Author_Name" ColumnName="Author_Name" />
+                <ScalarProperty Name="Author_Surname" ColumnName="Author_Surname" />
+                <ScalarProperty Name="Author_Mail" ColumnName="Author_Mail" />
+                <ScalarProperty Name="Author_Description" ColumnName="Author_Description" />
+                <ScalarProperty Name="Author_Password" ColumnName="Author_Password" />
+                <ScalarProperty Name="Author_Nickname" ColumnName="Author_Nickname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categorys">
+            <EntityTypeMapping TypeName="EnesAtacDBModel.Categorys">
+              <MappingFragment StoreEntitySet="Categorys">
+                <ScalarProperty Name="Category_Ranking" ColumnName="Category_Ranking" />
+                <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+                <ScalarProperty Name="Category_Name" ColumnName="Category_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="EnesAtacDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tags">
+            <EntityTypeMapping TypeName="EnesAtacDBModel.Tags">
+              <MappingFragment StoreEntitySet="Tags">
+                <ScalarProperty Name="Tag_Id" ColumnName="Tag_Id" />
+                <ScalarProperty Name="Tag_Name" ColumnName="Tag_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Log_Records">
+            <EntityTypeMapping TypeName="EnesAtacDBModel.Log_Records">
+              <MappingFragment StoreEntitySet="Log_Records">
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Article_Tags" TypeName="EnesAtacDBModel.Article_Tags" StoreEntitySet="Article_Tags">
+            <EndProperty Name="Articles">
+              <ScalarProperty Name="Article_Id" ColumnName="Article_Id" />
+            </EndProperty>
+            <EndProperty Name="Tags">
+              <ScalarProperty Name="Tag_Id" ColumnName="Tag_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Sliders">
+            <EntityTypeMapping TypeName="EnesAtacDBModel.Sliders">
+              <MappingFragment StoreEntitySet="Sliders">
+                <ScalarProperty Name="Slider_Url" ColumnName="Slider_Url" />
+                <ScalarProperty Name="Slider_Id" ColumnName="Slider_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommentsSet">
+            <EntityTypeMapping TypeName="EnesAtacDBModel.Comments">
+              <MappingFragment StoreEntitySet="Comments">
+                <ScalarProperty Name="Comment_Website" ColumnName="Comment_Website" />
+                <ScalarProperty Name="Comment_Email" ColumnName="Comment_Email" />
+                <ScalarProperty Name="Comment_Is_Active" ColumnName="Comment_Is_Active" />
+                <ScalarProperty Name="Comment_Article_İd" ColumnName="Comment_Article_İd" />
+                <ScalarProperty Name="Comment_Date" ColumnName="Comment_Date" />
+                <ScalarProperty Name="Comment_Content" ColumnName="Comment_Content" />
+                <ScalarProperty Name="Comment_Username" ColumnName="Comment_Username" />
+                <ScalarProperty Name="Comment_Id" ColumnName="Comment_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CKEditor_Images">
+            <EntityTypeMapping TypeName="EnesAtacDBModel.CKEditor_Images">
+              <MappingFragment StoreEntitySet="CKEditor_Images">
+                <ScalarProperty Name="CKEditor_Url" ColumnName="CKEditor_Url" />
+                <ScalarProperty Name="CKEditor_Id" ColumnName="CKEditor_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

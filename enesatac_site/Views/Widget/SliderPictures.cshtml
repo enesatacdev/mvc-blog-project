@@ -1,0 +1,28 @@
+﻿@model IEnumerable<enesatac_site.Models.Sliders>
+@{
+    ViewBag.Title = "SliderPictures";
+}
+
+<section class="content-wrap">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="splide">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        @foreach (enesatac_site.Models.Sliders sliders in Model)
+                        {
+                            <li class="splide__slide">
+                                <div class="splide__slide__container">
+                                    <img src="@sliders.Slider_Url">
+                                </div>
+                            </li>
+                        }
+
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EnesAtacDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Articles">
+    <Key>
+      <PropertyRef Name="Article_Id" />
+    </Key>
+    <Property Name="Article_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Article_Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Article_Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Article_Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Category_Id" Type="Int32" Nullable="false" />
+    <Property Name="Article_View_Count" Type="Int32" Nullable="false" />
+    <Property Name="Article_Like_Count" Type="Int32" Nullable="false" />
+    <Property Name="Author_Id" Type="Int32" Nullable="false" />
+    <Property Name="Is_Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Authors" Relationship="Self.FK_Articles_Authors1" FromRole="Articles" ToRole="Authors" />
+    <NavigationProperty Name="Categorys" Relationship="Self.FK_Articles_Categorys" FromRole="Articles" ToRole="Categorys" />
+    <NavigationProperty Name="Tags" Relationship="Self.Article_Tags" FromRole="Articles" ToRole="Tags" />
+    <NavigationProperty Name="Comments1" Relationship="EnesAtacDBModel.FK_Comments_Articles1" FromRole="Articles" ToRole="Comments1" />
+    <Property Name="Article_Is_Active_On_Last_Artices" Type="Boolean" Nullable="false" />
+    <Property Name="Article_Meta_Tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Article_Meta_Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Article_Cover_Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Authors">
+    <Key>
+      <PropertyRef Name="Auther_Id" />
+    </Key>
+    <Property Name="Auther_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Author_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Author_Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Author_Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Author_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Author_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Author_Nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Articles" Relationship="Self.FK_Articles_Authors1" FromRole="Authors" ToRole="Articles" />
+    <Property Name="Author_PictureUrl" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Author_Article_Description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Categorys">
+    <Key>
+      <PropertyRef Name="Category_Id" />
+    </Key>
+    <Property Name="Category_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Category_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Articles" Relationship="Self.FK_Articles_Categorys" FromRole="Categorys" ToRole="Articles" />
+    <Property Name="Category_Ranking" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Tags">
+    <Key>
+      <PropertyRef Name="Tag_Id" />
+    </Key>
+    <Property Name="Tag_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tag_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Articles" Relationship="Self.Article_Tags" FromRole="Tags" ToRole="Articles" />
+  </EntityType>
+  <EntityType Name="Log_Records">
+    <Key>
+      <PropertyRef Name="IpAddress" />
+      <PropertyRef Name="Date" />
+    </Key>
+    <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <Association Name="FK_Articles_Authors1">
+    <End Role="Authors" Type="Self.Authors" Multiplicity="1" />
+    <End Role="Articles" Type="Self.Articles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authors">
+        <PropertyRef Name="Auther_Id" />
+      </Principal>
+      <Dependent Role="Articles">
+        <PropertyRef Name="Author_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Articles_Categorys">
+    <End Role="Categorys" Type="Self.Categorys" Multiplicity="1" />
+    <End Role="Articles" Type="Self.Articles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categorys">
+        <PropertyRef Name="Category_Id" />
+      </Principal>
+      <Dependent Role="Articles">
+        <PropertyRef Name="Category_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Article_Tags">
+    <End Role="Articles" Type="Self.Articles" Multiplicity="*" />
+    <End Role="Tags" Type="Self.Tags" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="EnesAtac_DBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Articles" EntityType="Self.Articles" />
+    <EntitySet Name="Authors" EntityType="Self.Authors" />
+    <EntitySet Name="Categorys" EntityType="Self.Categorys" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Tags" EntityType="Self.Tags" />
+    <EntitySet Name="Log_Records" EntityType="Self.Log_Records" />
+    <AssociationSet Name="FK_Articles_Authors1" Association="Self.FK_Articles_Authors1">
+      <End Role="Authors" EntitySet="Authors" />
+      <End Role="Articles" EntitySet="Articles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Articles_Categorys" Association="Self.FK_Articles_Categorys">
+      <End Role="Categorys" EntitySet="Categorys" />
+      <End Role="Articles" EntitySet="Articles" />
+    </AssociationSet>
+    <AssociationSet Name="Article_Tags" Association="Self.Article_Tags">
+      <End Role="Articles" EntitySet="Articles" />
+      <End Role="Tags" EntitySet="Tags" />
+    </AssociationSet>
+    <EntitySet Name="Sliders" EntityType="EnesAtacDBModel.Sliders" />
+    <EntitySet Name="CommentsSet" EntityType="EnesAtacDBModel.Comments" />
+    <AssociationSet Name="FK_Comments_Articles1" Association="EnesAtacDBModel.FK_Comments_Articles1">
+      <End Role="Articles" EntitySet="Articles" />
+      <End Role="Comments1" EntitySet="CommentsSet" />
+    </AssociationSet>
+    <EntitySet Name="CKEditor_Images" EntityType="EnesAtacDBModel.CKEditor_Images" />
+  </EntityContainer>
+  <EntityType Name="Sliders">
+    <Key>
+      <PropertyRef Name="Slider_Id" />
+      <PropertyRef Name="Slider_Url" />
+    </Key>
+    <Property Name="Slider_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Slider_Url" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="Comment_Id" />
+    </Key>
+    <Property Name="Comment_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Comment_Username" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="Comment_Content" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Comment_Date" Type="DateTime" Precision="3" />
+    <Property Name="Comment_Article_İd" Type="Int32" Nullable="false" />
+    <Property Name="Comment_Is_Active" Type="Boolean" Nullable="false" />
+    <Property Name="Comment_Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Comment_Website" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Articles" Relationship="EnesAtacDBModel.FK_Comments_Articles1" FromRole="Comments1" ToRole="Articles" />
+  </EntityType>
+  <Association Name="FK_Comments_Articles1">
+    <End Type="EnesAtacDBModel.Articles" Role="Articles" Multiplicity="1" />
+    <End Type="EnesAtacDBModel.Comments" Role="Comments1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Articles">
+        <PropertyRef Name="Article_Id" />
+      </Principal>
+      <Dependent Role="Comments1">
+        <PropertyRef Name="Comment_Article_İd" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="CKEditor_Images">
+    <Key>
+      <PropertyRef Name="CKEditor_Id" />
+    </Key>
+    <Property Name="CKEditor_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CKEditor_Url" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

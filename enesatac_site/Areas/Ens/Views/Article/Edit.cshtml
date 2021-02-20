@@ -1,0 +1,99 @@
+﻿@model enesatac_site.Models.Articles
+@{
+    ViewBag.Title = Model.Article_Title + " Düzenleme";
+    Layout = "~/Areas/Ens/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-wrapper">
+
+    <div class="page-content-wrapper">
+        <div class="page-content">
+
+            <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
+                <div class="breadcrumb-title pr-3">Makale Listesi</div>
+                <div class="pl-3">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0 p-0">
+                            <li class="breadcrumb-item">
+                                <a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                            </li>
+                            <li class="breadcrumb-item" aria-current="page">Makale Düzenleme</li>
+                            <li class="breadcrumb-item active" aria-current="page">@Model.Article_Title Düzenleme</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-12">
+                <div class="card radius-15 border-lg-top-white">
+                    <div class="card-body p-5">
+                        <div class="card-title d-flex align-items-center">
+                            <div>
+                                <i class="bx bxs-task mr-1 font-24 text-white"></i>
+                            </div>
+                            <h4 class="mb-0 text-white">@Model.Article_Title | Makale Düzenleme</h4>
+                        </div>
+                        <hr>
+                        <div class="form-body">
+                            @using (Html.BeginForm("Edit", "Article", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>Makale Başlığı</label>
+                                    @Html.TextBoxFor(m => m.Article_Title, new { @class = "form-control" })
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>Makale Id</label>
+                                    @Html.TextBoxFor(m => m.Article_Id, new { @class = "form-control", @readonly = "readonly" })
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <label>Makale Kategorisi</label>
+                                    @Html.DropDownListFor(m => m.Categorys.Category_Id, (IEnumerable<SelectListItem>)ViewBag.ListBoxValues, new { size = Convert.ToInt32(ViewBag.CategoryCounter), @class = "form-control select-box-style" })
+                                </div>
+
+                               
+                                <div class="form-group">
+                                    <label>Makale Yazısı</label>
+                                    @Html.TextAreaFor(m => m.Article_Content, new { @class = "ckeditor" })
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="formControlRange">Makale Meta Etiketleri</label>
+                                        @Html.TextBoxFor(m => m.Article_Meta_Tags, new { data_role = "tagsinput", @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <label>Makale Meta Açıklaması</label>
+                                    @Html.TextBoxFor(m => m.Article_Meta_Description, new { @class = "form-control" })
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label>Makale Kapak Resmi</label>
+                                    <div class="col-md-4 mb-3">
+                                        <img src="@Model.Article_Cover_Image" style="width:100%;" />
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input id="coverUpload" type="file" class="form-control" name="coverimg" style="padding:3px" />
+
+                                    </div>
+
+                                </div>
+                                <button type="submit" class="btn btn-light px-5 radius-30 mt-3">Kaydet</button>
+                            </div>
+
+                            }
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

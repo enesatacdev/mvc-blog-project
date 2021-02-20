@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "SearchSidebar";
+}
+
+<div id="search-2" class="widget widget_search">
+    @using (Html.BeginForm("SearchResults", "Widget", FormMethod.Post, new { @class="search-form" }))
+    {
+        <div class="form-group clearfix">
+            <label for="search">Arama</label>
+            <input type="text" name="param" id="param" value="" class="pull-left search-input" placeholder="Makale Ara...">
+            <button class="fa fa-search btn btn-default search-submit pull-right" type="submit"></button>
+        </div>
+    }
+    
+</div>

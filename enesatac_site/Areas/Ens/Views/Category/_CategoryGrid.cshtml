@@ -1,0 +1,18 @@
+﻿@using NonFactors.Mvc.Grid
+@model IEnumerable<enesatac_site.Models.Categorys>
+@{
+    ViewBag.Title = "_CategoryGrid";
+}
+
+
+
+@(Html.Grid(Model).Build(col =>
+{
+    col.Add(x => x.Category_Id).Sortable(true).Titled("#");
+    col.Add(x => x.Category_Name).Sortable(true).Filterable(true).Titled("Kategori Adı").Css("taskSingleInline");
+    col.Add(x => "<div class='btn-group pull-right'><a href=/Ens/Category/Edit/"+ x.Category_Id + " id='bEdit' type='button' class='btn btn-sm btn-default'><span class='bx bx-edit makale-font'> </span></a><a href=/Ens/Category/Delete/" + x.Category_Id + " id='bDel' type='button' class='btn btn-sm btn-default'><span class='bx bx-trash makale-font'> </span></a></div>").Titled("Kategori Düzenleme").Encoded(false);
+})
+    .Empty("Veri Bulunamadı")
+    .AppendCss("table table-striped table-bordered mb-0")
+    .Css("ajax-sortable")
+)

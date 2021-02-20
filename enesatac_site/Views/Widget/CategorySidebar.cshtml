@@ -1,0 +1,17 @@
+﻿@model IEnumerable<enesatac_site.Models.Categorys>
+@{
+    ViewBag.Title = "CategorySidebar";
+}
+
+<div id="categories-2" class="widget widget_categories">
+    <h4 class="title">Kategoriler</h4>
+    <ul>
+        @foreach (enesatac_site.Models.Categorys categorys in Model)
+        {
+            <li class="cat-item cat-item-2">
+                <a href="@Url.KategoriSeoLink(categorys)">@categorys.Category_Name</a> <span class="post-count">@categorys.Articles.Count</span>
+            </li>
+        }
+    </ul>
+</div>
+

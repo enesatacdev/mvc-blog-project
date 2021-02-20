@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Sidebar";
+}
+
+<div class="col-md-4 sidebar sticky-sidebars mt-30">
+    <div class="sticky-top">
+
+        @Html.Action("SearchSidebar", "Widget")
+
+        @Html.Action("LastArticles", "Widget")
+
+        @Html.Action("CategorySidebar", "Widget")
+
+        @Html.Action("TagsSidebar", "Widget")
+
+        <div id="futura_social_links_widget-4" class="widget widget_futura_social_links_widget">
+            <h4 class="title">Sosyal Medyada Biz</h4>
+            <div class="content">
+                <ul class="social">
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="#"><i class="fa fa-skype"></i></a></li>
+                    <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                    <li><a href="#"><i class="fa fa-github"></i></a></li>
+                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

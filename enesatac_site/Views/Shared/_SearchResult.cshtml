@@ -1,0 +1,84 @@
+﻿@model IEnumerable<enesatac_site.Models.Articles>
+
+<section class="content-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 main-content mt-30">
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <div class="main-section-header post">
+                            <h2 class="text-center">Son Eklenen Makaleler</h2>
+                        </div>
+                    </div>
+
+                    @foreach (enesatac_site.Models.Articles makale in Model)
+                    {
+                        <div class="col-md-6 ">
+                            <article class="post post-61 type-post status-publish format-standard has-post-thumbnail hentry category-standard tag-text-post">
+                                <div class="featured-media">
+                                    <a href="#"><img src="@makale.Article_Cover_Image" class="attachment-post-thumbnail size-post-thumbnail wp-post-image"></a>
+                                </div>
+
+                                <div class="post-head mt-30">
+                                    <h2 class="post-title"><a href="@Url.MakaleSeoLink(makale)" title="@makale.Article_Title">@ArticleTitleLength(makale.Article_Title) ...</a></h2>
+                                    <div class="post-meta">
+                                        <span class="author">Yazar <a href="@Url.YazarSeoLink(makale.Authors)">@makale.Authors.Author_Name</a></span> &bull;
+                                        <span class="date"><i class="fa fa-calendar"></i> @makale.Article_Date.ToShortDateString()</span>
+                                        <span class="comment-count"><i class="fa fa-comments"></i> @makale.Comments1.Count()</span>
+                                    </div>
+                                </div>
+
+                                <div class="post-content text-center">
+                                    <p>@IcerikMetinKisalt(makale.Article_Content) ...</p>
+                                    <div class="post-permalink">
+                                        <a href="@Url.MakaleSeoLink(makale)" class="btn btn-default">Devamını Gör</a>
+                                    </div>
+
+                                </div>
+                                <footer class="post-footer clearfix">
+                                    <div class="pull-left category-list">
+                                        <i class="fa fa-folder-open-o"></i>
+                                        <a href="@Url.KategoriSeoLink(makale.Categorys)" rel="category tag">@makale.Categorys.Category_Name</a>
+                                    </div>
+                                </footer>
+                            </article>
+                        </div>
+                    }
+
+
+
+                </div>
+            </div>
+
+
+            @Html.Action("Sidebar", "Widget")
+
+        </div>
+    </div>
+</section>
+
+@helper ArticleTitleLength(string ArticleTitle)
+{
+    if (ArticleTitle.Length > 22)
+    {
+        @ArticleTitle.Substring(0, 18)
+    }
+    else
+    {
+        @ArticleTitle
+    }
+
+}
+
+@helper IcerikMetinKisalt(string metin)
+{
+    if (metin.Length > 150)
+    {
+        @metin.Substring(0, 150)
+    }
+    else
+    {
+        @metin
+    }
+
+}

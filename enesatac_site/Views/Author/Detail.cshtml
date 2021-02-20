@@ -1,0 +1,53 @@
+﻿@model enesatac_site.Models.Authors
+@{
+    ViewBag.Title = Model.Author_Name + " Hakkında";
+}
+
+
+<section class="content-wrap second-contents breadcrumb-colors c-white">
+    <div class="row">
+        <div class="container">
+            <nav aria-label="breadcrumb m-0 c-white">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item c-white"><a href="#" class="sp-color1">Anasayfa</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="#" class="sp-color1">@Model.Author_Name Hakkında</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="content-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 main-content">
+                <article class="post post-27 type-post status-publish format-standard has-post-thumbnail hentry category-standard tag-sticky tag-text-post">
+                    <div class="featured">
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <div class="post-head">
+                        <h2 class="post-title"><a href="#">@Model.Author_Name Hakkında</a></h2>
+                    </div>
+                    <div class="col-md-4">
+                        <div>
+                            <a href="#"><img src="@Model.Author_PictureUrl" style="border-radius:100%;background:none" /></a>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="post-content">
+                            <p>@Model.Author_Description</p>
+                        </div>
+                    </div>
+
+
+
+                </article>
+
+
+            </div>
+
+
+            @Html.Action("Sidebar", "Widget")
+        </div>
+    </div>
+</section>

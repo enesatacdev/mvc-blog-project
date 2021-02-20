@@ -1,0 +1,31 @@
+﻿@model IEnumerable<enesatac_site.Models.Articles>
+
+@{
+    ViewBag.Title = "FooterLastArticles";
+}
+
+<div class="col-sm-4">
+    <div id="text-3" class="widget widget_text">
+        <h4 class="title">Son Eklenen Gönderiler</h4>
+        <ul>
+            @foreach (enesatac_site.Models.Articles articles in Model)
+            {
+                <li class="footer-post-li">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <a href="@Url.MakaleSeoLink(articles)"><img src="@articles.Article_Cover_Image" class="attachment-post-thumbnail size-post-thumbnail wp-post-image"></a>
+                        </div>
+                        <div class="col-md-7">
+                            <a class="footer-post" href="@Url.MakaleSeoLink(articles)" title="@articles.Article_Title">@articles.Article_Title.Substring(0,15) ...</a>
+                            <p class="footer-date">@articles.Article_Date.ToShortDateString()</p>
+                        </div>
+                    </div>
+                </li>
+            }
+            
+        </ul>
+    </div>
+</div>
+
+
+

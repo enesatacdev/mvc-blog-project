@@ -1,0 +1,98 @@
+﻿@model IEnumerable<enesatac_site.Models.Articles>
+@using NonFactors.Mvc.Grid
+@{
+    ViewBag.Title = "Anasayfa - İstatistikler";
+    Layout = "~/Areas/Ens/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-wrapper">
+
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <div class="row">
+                <div class="col-12 col-lg-3">
+                    <div class="card radius-15">
+                        <div class="card-body">
+                            <div class="media align-items-center">
+                                <div class="media-body">
+                                    <h4 class="mb-0 font-weight-bold text-white">@ViewBag.ArticleCount</h4>
+                                    <p class="mb-0 text-white">Makale Sayısı</p>
+                                </div>
+                                <div class="font-35 text-white">
+                                    <i class="bx bx-task"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-3">
+                    <div class="card radius-15">
+                        <div class="card-body">
+                            <div class="media align-items-center">
+                                <div class="media-body">
+                                    <h4 class="mb-0 font-weight-bold">@ViewBag.CommentCount</h4>
+                                    <p class="mb-0">Yorum Sayısı</p>
+                                </div>
+                                <div class="font-35">
+                                    <i class="bx bx-conversation"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-3">
+                    <div class="card radius-15">
+                        <div class="card-body">
+                            <div class="media align-items-center">
+                                <div class="media-body">
+                                    <h4 class="mb-0 font-weight-bold text-white">10</h4>
+                                    <p class="mb-0 text-white">Aylık Ziyaretçi Sayısı</p>
+                                </div>
+                                <div class="font-35 text-white">
+                                    <i class="bx bx-user"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-3">
+                    <div class="card radius-15">
+                        <div class="card-body">
+                            <div class="media align-items-center">
+                                <div class="media-body">
+                                    <h4 class="mb-0 font-weight-bold text-white">@ViewBag.LastArticleLike</h4>
+                                    <p class="mb-0 text-white">Son Gönderi Beğeni Sayısı</p>
+                                </div>
+                                <div class="font-35 text-white">
+                                    <i class="bx bx-conversation"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="card radius-15">
+                <div class="card-header border-bottom-0">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h5 class="mb-0">Son Makaleler</h5>
+                        </div>
+                        <div class="ml-auto">
+                            <button type="button" class="btn btn-light radius-15">Tümünü Gör</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        @Html.AjaxGrid(Url.Action("_IndexArticlesGrid"))
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EnesAtacDBModelStoreContainer" CdmEntityContainer="EnesAtacDBEntities">
+    <EntitySetMapping Name="Articles">
+      <EntityTypeMapping TypeName="EnesAtacDBModel.Articles">
+        <MappingFragment StoreEntitySet="Articles">
+          <ScalarProperty Name="Article_Is_Active_On_Last_Artices" ColumnName="Article_Is_Active_On_Last_Artices" />
+          <ScalarProperty Name="Article_Id" ColumnName="Article_Id" />
+          <ScalarProperty Name="Article_Title" ColumnName="Article_Title" />
+          <ScalarProperty Name="Article_Content" ColumnName="Article_Content" />
+          <ScalarProperty Name="Article_Date" ColumnName="Article_Date" />
+          <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+          <ScalarProperty Name="Article_View_Count" ColumnName="Article_View_Count" />
+          <ScalarProperty Name="Article_Like_Count" ColumnName="Article_Like_Count" />
+          <ScalarProperty Name="Author_Id" ColumnName="Author_Id" />
+          <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+          <ScalarProperty Name="Picture_Id" ColumnName="Picture_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Authors">
+      <EntityTypeMapping TypeName="EnesAtacDBModel.Authors">
+        <MappingFragment StoreEntitySet="Authors">
+          <ScalarProperty Name="Auther_Id" ColumnName="Auther_Id" />
+          <ScalarProperty Name="Author_Name" ColumnName="Author_Name" />
+          <ScalarProperty Name="Author_Surname" ColumnName="Author_Surname" />
+          <ScalarProperty Name="Author_Mail" ColumnName="Author_Mail" />
+          <ScalarProperty Name="Author_Description" ColumnName="Author_Description" />
+          <ScalarProperty Name="Author_PictureUrl" ColumnName="Author_PictureUrl" />
+          <ScalarProperty Name="Author_Password" ColumnName="Author_Password" />
+          <ScalarProperty Name="Author_Nickname" ColumnName="Author_Nickname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categorys">
+      <EntityTypeMapping TypeName="EnesAtacDBModel.Categorys">
+        <MappingFragment StoreEntitySet="Categorys">
+          <ScalarProperty Name="Category_Ranking" ColumnName="Category_Ranking" />
+          <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+          <ScalarProperty Name="Category_Name" ColumnName="Category_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="EnesAtacDBModel.Comments">
+        <MappingFragment StoreEntitySet="Comments">
+          <ScalarProperty Name="Comment_Id" ColumnName="Comment_Id" />
+          <ScalarProperty Name="Comment_Username" ColumnName="Comment_Username" />
+          <ScalarProperty Name="Comment_Content" ColumnName="Comment_Content" />
+          <ScalarProperty Name="Comment_Date" ColumnName="Comment_Date" />
+          <ScalarProperty Name="Comment_Article_İd" ColumnName="Comment_Article_İd" />
+          <ScalarProperty Name="Comment_Is_Active" ColumnName="Comment_Is_Active" />
+          <ScalarProperty Name="Comment_Email" ColumnName="Comment_Email" />
+          <ScalarProperty Name="Comment_Website" ColumnName="Comment_Website" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pictures">
+      <EntityTypeMapping TypeName="EnesAtacDBModel.Pictures">
+        <MappingFragment StoreEntitySet="Pictures">
+          <ScalarProperty Name="Picture_Id" ColumnName="Picture_Id" />
+          <ScalarProperty Name="Small_Picture_Url" ColumnName="Small_Picture_Url" />
+          <ScalarProperty Name="Medium_Picture_Url" ColumnName="Medium_Picture_Url" />
+          <ScalarProperty Name="Big_Picture_Url" ColumnName="Big_Picture_Url" />
+          <ScalarProperty Name="Cover_Photo_Url" ColumnName="Cover_Photo_Url" />
+          <ScalarProperty Name="Video" ColumnName="Video" />
+          <ScalarProperty Name="Article_Id" ColumnName="Article_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="EnesAtacDBModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tags">
+      <EntityTypeMapping TypeName="EnesAtacDBModel.Tags">
+        <MappingFragment StoreEntitySet="Tags">
+          <ScalarProperty Name="Tag_Id" ColumnName="Tag_Id" />
+          <ScalarProperty Name="Tag_Name" ColumnName="Tag_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Log_Records">
+      <EntityTypeMapping TypeName="EnesAtacDBModel.Log_Records">
+        <MappingFragment StoreEntitySet="Log_Records">
+          <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sliders">
+      <EntityTypeMapping TypeName="EnesAtacDBModel.Sliders">
+        <MappingFragment StoreEntitySet="Sliders">
+          <ScalarProperty Name="Slider_Id" ColumnName="Slider_Id" />
+          <ScalarProperty Name="Slider_Url" ColumnName="Slider_Url" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Article_Tags" TypeName="EnesAtacDBModel.Article_Tags" StoreEntitySet="Article_Tags">
+      <EndProperty Name="Articles">
+        <ScalarProperty Name="Article_Id" ColumnName="Article_Id" />
+      </EndProperty>
+      <EndProperty Name="Tags">
+        <ScalarProperty Name="Tag_Id" ColumnName="Tag_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="CKEditor_Images">
+      <EntityTypeMapping TypeName="EnesAtacDBModel.CKEditor_Images">
+        <MappingFragment StoreEntitySet="CKEditor_Images">
+          <ScalarProperty Name="CKEditor_Url" ColumnName="CKEditor_Url" />
+          <ScalarProperty Name="CKEditor_Id" ColumnName="CKEditor_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

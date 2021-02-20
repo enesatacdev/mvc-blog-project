@@ -1,0 +1,22 @@
+﻿@model IEnumerable<enesatac_site.Models.Categorys>
+
+@{
+    ViewBag.Title = "FooterNavigation";
+}
+
+
+<div class="col-sm-4">
+    <div id="text-3" class="widget widget_text">
+        <h4 class="title">Hızlı Menü</h4>
+        <div class="col-md-12">
+            <ul>
+                @foreach (enesatac_site.Models.Categorys categorys in Model)
+                {
+                    <li><a class="footer-menu" href="@Url.KategoriSeoLink(categorys)">> @categorys.Category_Name</a></li>
+                }
+            </ul>
+        </div>
+
+    </div>
+</div>
+
