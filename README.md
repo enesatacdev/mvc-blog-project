@@ -8,7 +8,7 @@ Blog page and panel example using MVC and Entity Framework.
 
 ### Homepage
 
-![anasayfa](C:\Users\User\Desktop\site görselleri\anasayfa.png)
+![anasayfa](images\homepage.png)
 
 
 
