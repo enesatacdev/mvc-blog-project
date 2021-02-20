@@ -1,6 +1,7 @@
 # MVC Blog Project
 Blog page and panel example using MVC and Entity Framework.
 
+The project is still under construction and has many more deficiencies. I am working on the comment system now, I will do the login and registration parts in the future, the login and registration parts will be hashed with md5 encryption, since it lacks a lot on the security side, I will focus on the security part after the main issues are over.
 
 
 ## Images from website.
